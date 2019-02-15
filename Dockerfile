@@ -36,6 +36,7 @@ cd /src/curl && \
 ./buildconf && \
 ./configure --with-nghttp2 && \
 make && \
+make install && \
 
 ## Domoticz installation
 # clone git source in src
