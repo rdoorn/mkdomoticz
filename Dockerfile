@@ -55,7 +55,7 @@ cd /tmp && \
 # rm -Rf /src/domoticz && \
 
 # ouimeaux
-pip3 install -U ouimeaux \
+pip3 install -U ouimeaux && \
 
 # remove git and tmp dirs
 apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev libudev-dev && \
