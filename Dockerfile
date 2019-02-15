@@ -43,6 +43,7 @@ make install && \
 git clone -b "${DOMOTICZ_VERSION}" --depth 2 https://github.com/domoticz/domoticz.git /src/domoticz && \
 # Domoticz needs the full history to be able to calculate the version string
 cd /src/domoticz && \
+sed -e 's/9700/10364/' -i ./appversion.default && \
 git fetch --unshallow && \
 # prepare makefile
 cmake -DCMAKE_BUILD_TYPE=Release . && \
