@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
 	zlib1g-dev \
 	libudev-dev \
 	python3-dev python3-pip \
-        fail2ban && \
+        fail2ban \
+        autoconf && \
     # linux-headers-generic
 
 ## OpenZwave installation
@@ -29,6 +30,12 @@ make && \
 
 # "install" in order to be found by domoticz
 ln -s /src/open-zwave /src/open-zwave-read-only && \
+
+git clone https://github.com/curl/curl /src/curl && \
+cd /src/curl && \
+./buildconf && \
+./configure --with-nghttp2 && \
+make && \
 
 ## Domoticz installation
 # clone git source in src
@@ -47,13 +54,13 @@ cd /tmp && \
 # rm -Rf /src/domoticz && \
 
 # ouimeaux
-pip3 install -U ouimeaux && \
+pip3 install -U ouimeaux \
 
 # remove git and tmp dirs
 apt-get remove -y git cmake linux-headers-amd64 build-essential libssl-dev libboost-dev libboost-thread-dev libboost-system-dev libsqlite3-dev libcurl4-openssl-dev libusb-dev zlib1g-dev libudev-dev && \
-   apt-get autoremove -y && \ 
-   apt-get clean && \
-   rm -rf /var/lib/apt/lists/*
+apt-get autoremove -y && \ 
+apt-get clean && \
+rm -rf /var/lib/apt/lists/*
 
 
 VOLUME /config

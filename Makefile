@@ -93,7 +93,7 @@ rundocker:
 	-t $(TAG)
 
 builddocker:
-	docker build -t `cat TAG` .
+	docker build . -t `cat TAG`
 
 kill:
 	-@docker kill `cat cid`
